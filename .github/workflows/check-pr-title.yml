@@ -4,10 +4,14 @@ on:
     types: [opened, edited, synchronize]
 jobs:
   check-title:
+    Name: Check PR Title
     runs-on: ubuntu-latest
     steps:
     - name: Check PR title
       env:
         TITLE: ${{ github.event.pull_request.title }}
       run: |
-        grep -qE 'EEPD-\d+' <<< "$TITLE" || { echo PR Title does not contain a JIRA ticket; exit 1; }
+        grep -qE 'EEPD-\d+' <<< "$TITLE" || {
+          echo Pull request title does not contain a JIRA ticket
+          exit 1
+        }
