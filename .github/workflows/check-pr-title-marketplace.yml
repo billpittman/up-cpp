@@ -9,6 +9,6 @@ jobs:
   check-title:
     runs-on: ubuntu-latest
     steps:
-      uses: dylanvann/check-pull-request-title@v1
-      with:
-        pattern: '^EEPD-[0-9]{5}'
+      - uses: dylanvann/check-pull-request-title@v1
+        with:
+          pattern: '^EEPD-[0-9]{5}'
