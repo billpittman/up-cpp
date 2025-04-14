@@ -1,0 +1,13 @@
+name: "JIRA ticket in PR Title"
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+jobs:
+  check-title:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check PR title
+      env:
+        TITLE: ${{ github.event.pull_request.title }}
+      run: |
+        grep -qE 'EEPD-\d+' <<< "$TITLE" || { echo PR Title does not contain a JIRA ticket; exit 1; }
