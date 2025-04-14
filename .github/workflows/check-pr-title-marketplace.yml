@@ -1,0 +1,14 @@
+name: "MP - JIRA ticket in PR Title"
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+    branches: main
+
+jobs:
+  check-title:
+    runs-on: ubuntu-latest
+    steps:
+      uses: dylanvann/check-pull-request-title@v1
+      with:
+        pattern: '^EEPD-[0-9]{5}'
