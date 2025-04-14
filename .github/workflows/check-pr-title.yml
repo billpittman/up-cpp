@@ -15,6 +15,6 @@ jobs:
         TITLE: ${{ github.event.pull_request.title }}
       run: |
         if ! grep -qE 'EEPD-[0-9]{5,}' <<< "$TITLE" ; then
-          echo Pull request title does not contain a JIRA ticket
+          echo Please include the JIRA ticket in the pull request title.
           exit 1
         fi
