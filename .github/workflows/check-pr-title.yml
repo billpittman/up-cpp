@@ -13,4 +13,7 @@ jobs:
       env:
         TITLE: ${{ github.event.pull_request.title }}
       run: |
-        grep -qE 'EEPD-[0-9]{5,}' <<< "$TITLE" || { echo Pull request title does not contain a JIRA ticket; exit 1; }
+        if ! grep -qE 'EEPD-[0-9]{5,}' <<< "$TITLE" ; then
+          echo Pull request title does not contain a JIRA ticket
+          exit 1
+        fi
