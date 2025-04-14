@@ -9,7 +9,7 @@ jobs:
   check-title:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: dylanvann/check-pull-request-title@v1
+      - name: Enforce Jira Issue Key in Pull Request Title
+      - uses: ryanvade/enforce-pr-title-style-action@v2.1.2
         with:
-          pattern: '^EEPD-[0-9]{5}'
+          projectKey: 'EEPD'
