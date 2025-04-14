@@ -2,7 +2,8 @@ name: "JIRA ticket in PR Title"
 
 on:
   pull_request:
-    branches: [ "**" ]
+    types: [opened, edited, synchronize]
+    branches: main
 
 jobs:
   check-title:
