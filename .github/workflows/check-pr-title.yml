@@ -1,0 +1,20 @@
+name: "JIRA ticket in PR Title"
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+    branches: main
+
+jobs:
+  check-title:
+    name: Check PR Title
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check PR title
+      env:
+        TITLE: ${{ github.event.pull_request.title }}
+      run: |
+        if ! grep -qE 'EEPD-[0-9]{5,}' <<< "$TITLE" ; then
+          echo Please include the JIRA ticket in the pull request title.
+          exit 1
+        fi
